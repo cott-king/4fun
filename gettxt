@@ -1,0 +1,29 @@
+public static void GetTxt(DirectoryInfo dir)
+        {
+            FileInfo[] files = dir.GetFiles();
+
+            FileAttributes fa;            foreach (FileInfo item in files)
+            {                //if (item.Extension == ".txt")                //{                //遍历时忽略隐藏文件
+                fa = item.Attributes & FileAttributes.Hidden;                if (fa != FileAttributes.Hidden)
+                {                    //MessageBox.Show(item.FullName);                    //所有的记事本全路径全部放入list集合中                    list.Add(item.FullName);
+                }                //}            }
+
+            DirectoryInfo[] dirs = dir.GetDirectories();   //获取子目录
+            foreach (DirectoryInfo item in dirs)
+            {
+                GetTxt(item);
+            }
+        }//循环list里所有记事本文件foreach (string item in list)
+            {
+
+                FileStream fs = new FileStream(item, FileMode.Open);
+                StreamReader reader = new StreamReader(fs, Encoding.Default);               try
+                {                    //循环读取记事本
+                    while (true)
+                    {                        string str = reader.ReadLine();                        if (str == null)
+                        {                            break;
+                        }                        else if (str.Trim() == "")
+                        {                            continue;
+                        }                        else
+                        {                  //这里就是每行数据了  你可以进行处理 取出符合要求的行                        }
+               }
